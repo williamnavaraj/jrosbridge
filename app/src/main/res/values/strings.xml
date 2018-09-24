@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ROSClient</string>
+    <string name="send_message">Send message</string>
+</resources>
