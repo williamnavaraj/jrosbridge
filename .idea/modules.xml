@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RosClient.iml" filepath="$PROJECT_DIR$/RosClient.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/jrosbridgeandroid/jrosbridgeandroid.iml" filepath="$PROJECT_DIR$/jrosbridgeandroid/jrosbridgeandroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jrosbridge.iml" filepath="$PROJECT_DIR$/.idea/modules/jrosbridge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/jrosbridge.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/jrosbridge.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jrosbridgeandroid/jrosbridge.jrosbridgeandroid.iml" filepath="$PROJECT_DIR$/.idea/modules/jrosbridgeandroid/jrosbridge.jrosbridgeandroid.iml" />
     </modules>
   </component>
 </project>

@@ -37,16 +37,16 @@ public class MainActivity extends Activity {
             public void onConnect() {
                 client.setDebug(true);
                 ((RCApplication)getApplication()).setRosClient(client);
-                showTip("Connect ROS success");
-                Log.d(TAG,"Connect ROS success");
+                showTip("Connected to ROS: Success");
+                Log.d(TAG,"Connected to ROS: Success");
                 startActivity(new Intent(MainActivity.this, VideoActivity.class));
                 //startActivity(new Intent(MainActivity.this, MessageExampleActivity.class));
             }
 
             @Override
             public void onDisconnect(boolean normal, String reason, int code) {
-                showTip("ROS disconnect");
-                Log.d(TAG,"ROS disconnect" + reason);
+                showTip("ROS Disconnected");
+                Log.d(TAG,"ROS Disconnected" + reason);
             }
 
             @Override
@@ -68,9 +68,7 @@ public class MainActivity extends Activity {
         mBtnConnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(v.getContext(),"Hai",Toast.LENGTH_LONG);
 
-                showTip("Hai");
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
