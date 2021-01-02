@@ -36,7 +36,8 @@ public class VideoActivity extends Activity {
 
         bmp    = new BitmapFromCompressedImage();
         client = ((RCApplication)getApplication()).getRosClient();
-        messageTopic = new com.android.hp.ros.Topic<>("/usb_cam/image_raw/compressed", CompressedImage.class, client);
+        ///usb_cam/image_raw/compressed
+        messageTopic = new com.android.hp.ros.Topic<>("/ur5/usbcam/image_raw/compressed", CompressedImage.class, client);
         messageTopic.queue_length = 1;
         messageTopic.subscribe(new MessageHandler<CompressedImage>() {
             @Override

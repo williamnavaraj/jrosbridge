@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -14,25 +15,19 @@ import com.android.hp.ros.rosbridge.ROSBridgeClient;
 import net.xxhong.rosclient.R;
 import net.xxhong.rosclient.RCApplication;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainActivity extends Activity {
 
     private static final String TAG = "MainActivity";
-
-    @Bind(R.id.et_ip)
-    EditText etIP;
-    @Bind(R.id.et_port)
-    EditText etPort;
+    private Button mBtnConnect;
+    private EditText etIP;
+    private EditText etPort;
 
     private ROSBridgeClient client;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
     }
 
     private void connect(String ip, String port) {
@@ -45,6 +40,7 @@ public class MainActivity extends Activity {
                 showTip("Connect ROS success");
                 Log.d(TAG,"Connect ROS success");
                 startActivity(new Intent(MainActivity.this, VideoActivity.class));
+                //startActivity(new Intent(MainActivity.this, MessageExampleActivity.class));
             }
 
             @Override
@@ -61,7 +57,34 @@ public class MainActivity extends Activity {
             }
         });
     }
+    @Override
+    public void onResume() {
 
+        super.onResume();
+        setContentView(R.layout.activity_main);
+        mBtnConnect = (Button) findViewById(R.id.btn_connect);
+        etIP=(EditText) findViewById(R.id.et_ip);
+        etPort=(EditText) findViewById(R.id.et_port);
+        mBtnConnect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(v.getContext(),"Hai",Toast.LENGTH_LONG);
+
+                showTip("Hai");
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //Toast.makeText(MainActivity.this, tip,Toast.LENGTH_SHORT).show();
+                        String ip = etIP.getText().toString();
+                        String port = etPort.getText().toString();
+                        connect(ip, port);
+                    }
+                });
+
+            }
+        });
+
+    }
     private void showTip(final String tip) {
         runOnUiThread(new Runnable() {
             @Override
@@ -71,18 +94,5 @@ public class MainActivity extends Activity {
         });
     }
 
-    @OnClick({R.id.tv_ros,R.id.btn_connect})
-    public void onClick(View view) {
-        switch(view.getId()) {
-            case R.id.tv_ros:
-                break;
-            case R.id.btn_connect:
-                String ip = etIP.getText().toString();
-                String port = etPort.getText().toString();
-                connect(ip, port);
-                break;
-            default:break;
-        }
-    }
 
 }
